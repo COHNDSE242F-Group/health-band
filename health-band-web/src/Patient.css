@@ -1,0 +1,127 @@
+.patient-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+.patient-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.patient-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.patient-image img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #4f46e5;
+}
+
+.patient-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.patient-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.patient-age {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+.patient-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #374151;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-left: 4px;
+  padding-left: 4px;
+  border-left: 2px solid #e5e7eb;
+  width: 100%;
+}
+
+.stat span {
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+.heart-rate span {
+  color: #ef4444;
+}
+
+.oxygen-level span {
+  color: #3b82f6;
+}
+
+.temperature span {
+  color: #f97316;
+}
+
+.patient-updated {
+  margin-top: 10px;
+  font-size: 0.75rem;
+  color: #9ca3af;
+  font-style: italic;
+  margin-left: 4px;
+  width: 100%;
+}
+
+.patients-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 40px;
+  width: 100%;
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+
+.patients-list-container {
+  width: 100%;
+  overflow-x: hidden;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .patients-grid-container {
+    grid-template-columns: 1fr;
+    padding: 0 12px;
+    gap: 16px;
+  }
+  
+  .patient-card {
+    padding: 16px;
+  }
+}
+
+@media (min-width: 1800px) {
+  .patients-grid-container {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+}
