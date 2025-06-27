@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; // ✅ import navigate
 import { ref, onValue } from "firebase/database";
 import { database } from "./firebase";
 import "../Patient.css";
@@ -7,16 +8,15 @@ export default function Patient({ id }) {
   const [patient, setPatient] = useState({});
   const [latestSensor, setLatestSensor] = useState({});
   const [updatedAt, setUpdatedAt] = useState("-");
+  const navigate = useNavigate(); // ✅ setup navigation
 
   useEffect(() => {
     const patientRef = ref(database, `patients/${id}`);
-
     const unsubscribe = onValue(patientRef, (snapshot) => {
       const data = snapshot.val();
       if (!data) return;
 
       setPatient(data.personal_info || {});
-
       const sensors = data.sensordata || {};
       const sensorEntries = Object.entries(sensors).sort(
         ([a], [b]) => Number(b) - Number(a)
@@ -34,8 +34,16 @@ export default function Patient({ id }) {
     return () => unsubscribe();
   }, [id]);
 
+  const handleClick = () => {
+    navigate(`/patients/${id}`); // ✅ navigate to PatientDetails
+  };
+
   return (
-    <div className="patient-card">
+    <div
+      className="patient-card"
+      onClick={handleClick}
+      style={{ cursor: "pointer" }}
+    >
       <div className="patient-header">
         <div className="patient-image">
           <img
@@ -59,8 +67,15 @@ export default function Patient({ id }) {
         <div className="stat heart-rate">
           ❤️ Heart Rate: <span>{latestSensor.heart_rate ?? "-"}</span> bpm
         </div>
-        <div className="stat oxygen-level">
-          🩸 Oxygen Level: <span>{latestSensor.oxygenLevel ?? "-"}</span>%
+        <div className="stat blood-pressure">
+          💓 Blood Pressure:{" "}
+          <span>
+            {latestSensor.blood_pressure_systolic &&
+            latestSensor.blood_pressure_diastolic
+              ? `${latestSensor.blood_pressure_systolic}/${latestSensor.blood_pressure_diastolic}`
+              : "-"}
+          </span>{" "}
+          mmHg
         </div>
         <div className="stat temperature">
           🌡️ Temperature: <span>{latestSensor.temperature ?? "-"}</span> °C
