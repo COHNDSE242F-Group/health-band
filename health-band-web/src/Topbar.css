@@ -72,6 +72,7 @@
   border-radius: 8px;
   transition: background 0.3s, transform 0.2s;
   user-select: none;
+
 }
 
 /* Hover effect: background and subtle lift */
@@ -143,6 +144,7 @@
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
+  padding-top: 40px;
 }
 
 /* Main content fills available space */
@@ -226,3 +228,30 @@
   font-size: 30px !important; 
 }
 
+.menu-item.active {
+  background-color: #4f46e5 !important
+}
+
+.menu-item.active .icon {
+  color: white !important;
+}
+
+.menu-item.active .label {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  color: white !important;
+}
+
+.menu-item.active:hover {
+  background-color: #4338ca !important;
+}
+
+.menu-item:not(.active):hover {
+  background-color: #1f1f22;
+  transform: translateY(-3px);
+}
+
+.menu-item:not(.active):hover .label {
+  opacity: 1;
+  pointer-events: auto;
+}
