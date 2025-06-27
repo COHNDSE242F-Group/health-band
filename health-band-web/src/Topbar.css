@@ -142,17 +142,8 @@
 .app-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
   overflow: hidden;
   padding-top: 40px;
-}
-
-/* Main content fills available space */
-.main-content {
-  flex: 1;
-  overflow: hidden; /* prevent scroll */
-  position: relative;
-  background-color: #000; /* fallback color */
 }
 
 .hero-section {
