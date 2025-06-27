@@ -1,14 +1,15 @@
-import Topbar from './Topbar'; // your top bar component
+import React from "react";
+import PatientsList from "./components/PatientsList";
+import Topbar from './Topbar';
 import './App.css';
-import chatgptImage from './assets/ChatGPTImage.png'; // your image
 
 function App() {
   return (
-    <div className="app-container">
+    <div>
+     <div className="app-container">
       <Topbar />
       <div className="main-content">
         <div className="hero-section">
-          <img src={chatgptImage} alt="Health Band" className="hero-image" />
           {/* Dark overlay for darkening */}
           <div className="overlay"></div>
           <div className="hero-text">
@@ -16,7 +17,6 @@ function App() {
             <p>Future of health</p>
           </div>
         </div>
-      </div>
     </div>
   );
 }
