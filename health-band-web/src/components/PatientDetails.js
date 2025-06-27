@@ -54,7 +54,7 @@ const PatientDetails = () => {
   return (
     <div className="patient-details-container">
       <div className="sidebar">
-        <div className="patient-header">
+        <div className="patient-details-header">
           <div className="patient-image">
             <img
               src={
