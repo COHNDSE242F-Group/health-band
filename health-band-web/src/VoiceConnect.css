@@ -1,0 +1,140 @@
+.vc-container {
+  min-height: 100vh;
+  background: linear-gradient(to top right, #f1f5f9, #e0e7ff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.vc-title {
+  font-size: 24px;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.vc-avatars {
+  display: flex;
+  gap: 60px;
+  margin-bottom: 40px;
+}
+
+.vc-person {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vc-avatar {
+  width: 130px;
+  height: 130px;
+  border: 5px solid #ccc;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  font-size: 50px;   /* Add font size for initials */
+  font-weight: bold;
+  color: white;
+  background-color: #3b82f6; /* background for initials */
+}
+
+.vc-talking {
+  border-color: #22c55e;
+  box-shadow: 0 0 12px #22c55e;
+}
+
+.vc-initials {
+  user-select: none;
+}
+
+.vc-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vc-bar-wrapper {
+  width: 90px;
+  height: 8px;
+  background-color: #e5e7eb;
+  border-radius: 4px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.vc-bar {
+  height: 100%;
+  background-color: #10b981;
+  transition: width 0.1s ease;
+  border-radius: 4px;
+}
+
+.vc-bar-esp {
+  background-color: #3b82f6;
+}
+
+.vc-name {
+  margin-top: 8px;
+  font-weight: 600;
+  color: #444;
+}
+
+.vc-controls {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.vc-button {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  color: white;
+}
+
+.vc-button.mic-on {
+  background-color: #4f46e5;
+}
+
+.vc-button.mic-on:hover {
+  background-color: #4338ca;
+}
+
+.vc-button.mic-off {
+  background-color: #dc2626;
+}
+
+.vc-button.mic-off:hover {
+  background-color: #b91c1c;
+}
+
+.vc-button:disabled {
+  background-color: #a1a1aa;
+  cursor: not-allowed;
+}
+
+.vc-status {
+  font-size: 14px;
+  color: #444;
+}
+
+.vc-status-text.connected {
+  color: green;
+}
+
+.vc-status-text.error {
+  color: red;
+}
+
+.vc-status-text.disconnected {
+  color: gray;
+}
