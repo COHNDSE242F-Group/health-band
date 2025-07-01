@@ -1,0 +1,32 @@
+.add-patient-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.add-patient-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-patient-input, .add-patient-textarea {
+  margin-bottom: 10px;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.add-patient-textarea {
+  min-height: 60px;
+}
+
+.add-patient-button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
