@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "700214707732",
+    "firebase_url": "https://health-band-2f5e6-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "health-band-2f5e6",
+    "storage_bucket": "health-band-2f5e6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700214707732:android:20db2c94008805f09c8901",
+        "android_client_info": {
+          "package_name": "com.iot.healthbandmobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAodXkjqNQqrnifq1yg4Tc5DpGEYMOubYU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
