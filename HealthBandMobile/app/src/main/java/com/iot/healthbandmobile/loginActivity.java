@@ -65,7 +65,7 @@ public class loginActivity extends AppCompatActivity {
             }
         });
 
-        setupNavBar();
+
         togglePassword();
 
     }
@@ -101,6 +101,8 @@ public class loginActivity extends AppCompatActivity {
                         Intent intent = new Intent(loginActivity.this, healthRecordActivity.class);
                         intent.putExtra("userId", patientId);
                         startActivity(intent);
+                        found = true;  // ✅ ADD THIS!
+
                         finish();
                     }
                 }
@@ -116,32 +118,7 @@ public class loginActivity extends AppCompatActivity {
     }
 
 
-    public void setupNavBar() {
-        LinearLayout navHome = findViewById(R.id.navHome);
-        LinearLayout navHistory = findViewById(R.id.navHistory);
-        LinearLayout navNotification = findViewById(R.id.navNotification);
-        LinearLayout navProfile = findViewById(R.id.navProfile);
 
-        navHome.setOnClickListener(v -> {
-            startActivity(new Intent(this, loginActivity.class));
-            finish();
-        });
-
-        navHistory.setOnClickListener(v -> {
-            startActivity(new Intent(this, MainActivity.class));
-            finish();
-        });
-
-        //navNotification.setOnClickListener(v -> {
-        //    startActivity(new Intent(this, NotificationActivity.class));
-        //    finish();
-        // });
-
-        // navProfile.setOnClickListener(v -> {
-        //     startActivity(new Intent(this, ProfileActivity.class));
-        //     finish();
-        //  });
-    }
     public void togglePassword(){
         btnTogglePassword.setOnClickListener(new View.OnClickListener() {
             private boolean isPasswordVisible = false;
