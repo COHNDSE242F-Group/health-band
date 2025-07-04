@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+   alias(libs.plugins.google.services)  // apply Google Services plugin here
 }
 
 android {
@@ -32,12 +33,19 @@ android {
 }
 
 dependencies {
-
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+
+    // Add Firebase BOM and Realtime Database KTX using version catalog
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.database.ktx)
+    implementation(libs.firebase.auth)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
 }
+

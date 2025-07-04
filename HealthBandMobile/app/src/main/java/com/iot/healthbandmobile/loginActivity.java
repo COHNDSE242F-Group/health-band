@@ -1,6 +1,7 @@
 package com.iot.healthbandmobile;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -23,19 +24,18 @@ public class loginActivity extends AppCompatActivity {
     private LinearLayout btnSignIn;
     private FirebaseAuth firebaseAuth;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login );
+        setContentView(R.layout.login);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        // Find views
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
         btnSignIn = (LinearLayout) findViewById(R.id.btnSignIn).getParent();
 
-        // Set sign-in click listener
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,21 +58,25 @@ public class loginActivity extends AppCompatActivity {
             return;
         }
 
-        // Firebase login
         firebaseAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(loginActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(loginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-                            // TODO: Navigate to your next activity (e.g., home/dashboard)
-                            // startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                            // finish();
+                .addOnCompleteListener(loginActivity.this, task -> {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(loginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Exception e = task.getException();
+                        if (e != null) {
+                            String fullError = e.getClass().getSimpleName() + ": " + e.getMessage();
+                            Toast.makeText(loginActivity.this, "Login failed: " + fullError, Toast.LENGTH_LONG).show();
+
+                            // Optional: Log to Logcat for easier reading
+                            android.util.Log.e("FIREBASE_LOGIN", "Full error", e);
                         } else {
-                            Toast.makeText(loginActivity.this, "Login failed: " + task.getException().getMessage(),
-                                    Toast.LENGTH_LONG).show();
+                            android.util.Log.e("FIREBASE_LOGIN", "Full error", e);
+
+                            Toast.makeText(loginActivity.this, "Login failed: Unknown error", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
+
     }
 }
