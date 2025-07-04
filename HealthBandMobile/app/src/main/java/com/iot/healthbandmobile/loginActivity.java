@@ -11,12 +11,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DataSnapshot;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,7 +21,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import androidx.biometric.BiometricManager;
 import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
-
 import com.google.firebase.auth.AuthResult;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -55,8 +51,6 @@ public class loginActivity extends AppCompatActivity {
       //  btnFingerprintLogin = findViewById(R.id.btnFingerprintLogin);
 
      //   btnFingerprintLogin.setOnClickListener(v -> showBiometricPrompt());
-
-
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -195,5 +189,4 @@ public class loginActivity extends AppCompatActivity {
 
         biometricPrompt.authenticate(promptInfo);
     }*/
-
 }
