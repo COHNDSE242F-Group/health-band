@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "339762719829",
+    "firebase_url": "https://customernotificationapp-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "customernotificationapp",
+    "storage_bucket": "customernotificationapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:339762719829:android:7a9b2b584821c22c61f8dc",
+        "android_client_info": {
+          "package_name": "com.example.cusnotifigation"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhKDxVgqNesSK32ehFlYAGPYOW0-CRGyI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
