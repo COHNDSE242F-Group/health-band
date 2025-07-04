@@ -85,29 +85,34 @@ public class loginActivity extends AppCompatActivity {
         }
 
         // Get reference to the credentials node
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("patients/P001/credentials");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("patients");
         ref.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DataSnapshot snapshot = task.getResult();
-                if (snapshot.exists()) {
-                    String dbEmail = snapshot.child("username").getValue(String.class);
-                    String dbPassword = snapshot.child("password").getValue(String.class);
+                boolean found = false;
+
+                for (DataSnapshot patientSnapshot : snapshot.getChildren()) {
+                    String dbEmail = patientSnapshot.child("credentials/username").getValue(String.class);
+                    String dbPassword = patientSnapshot.child("credentials/password").getValue(String.class);
 
                     if (inputEmail.equals(dbEmail) && inputPassword.equals(dbPassword)) {
                         Toast.makeText(loginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-                        // Proceed to next activity
-                        startActivity(new Intent(loginActivity.this, MainActivity.class));
+                        String patientId = patientSnapshot.getKey();
+                        Intent intent = new Intent(loginActivity.this, healthRecordActivity.class);
+                        intent.putExtra("userId", patientId);
+                        startActivity(intent);
                         finish();
-                    } else {
-                        Toast.makeText(loginActivity.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
                     }
-                } else {
-                    Toast.makeText(loginActivity.this, "No credentials found", Toast.LENGTH_SHORT).show();
+                }
+
+                if (!found) {
+                    Toast.makeText(loginActivity.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                Toast.makeText(loginActivity.this, "Database error: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(loginActivity.this, "Database error", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
 

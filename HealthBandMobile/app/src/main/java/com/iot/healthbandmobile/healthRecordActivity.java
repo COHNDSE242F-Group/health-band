@@ -22,6 +22,7 @@ public class healthRecordActivity extends AppCompatActivity {
 
     private DatabaseReference medicalDetailsRef;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,14 +35,18 @@ public class healthRecordActivity extends AppCompatActivity {
         bloodGroupValueText = findViewById(R.id.bloodGroupValueText);
         weightValueText = findViewById(R.id.weightValueText);
 
-        // Get current user ID
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-        // Reference to user's medical details
+        // Check if user is logged in
+        String userId = getIntent().getStringExtra("userId");
+        if (userId == null) {
+            Toast.makeText(this, "User ID missing", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
         medicalDetailsRef = FirebaseDatabase.getInstance().getReference("medical_details").child(userId);
-
         loadMedicalDetails();
+
     }
+
 
     private void loadMedicalDetails() {
         medicalDetailsRef.addListenerForSingleValueEvent(new ValueEventListener() {
