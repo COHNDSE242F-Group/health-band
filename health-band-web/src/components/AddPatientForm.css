@@ -82,3 +82,13 @@
   font-size: 16px;
   cursor: pointer;
 }
+
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.success-message {
+  color: green;
+  margin-bottom: 10px;
+}
