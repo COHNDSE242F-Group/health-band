@@ -1,22 +1,16 @@
-// firebase.js
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getDatabase } from "firebase/database"; // ✅ Realtime Database
-import { getStorage } from "firebase/storage";   // ✅ Storage for CVs
+import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDMUwIoYB-G65Jox16ynvtqR_3-hE8Rzig",
-  authDomain: "hnd-iot.firebaseapp.com",
-  projectId: "hnd-iot",
-  storageBucket: "hnd-iot.appspot.com",
-  messagingSenderId: "4841713277",
-  appId: "1:4841713277:web:6260ceaa540a3857c74b14"
+    apiKey: "AIzaSyBjBfYRb7Nz8PVl2bSDxrFTEMoEIRWUxPA",
+    authDomain: "health-band-2f5e6.firebaseapp.com",
+    databaseURL: "https://health-band-2f5e6-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "health-band-2f5e6",
+    storageBucket: "health-band-2f5e6.appspot.com",
+    messagingSenderId: "700214707732",
+    appId: "1:700214707732:web:65b36f2e067006c69c8901",
+    measurementId: "G-QQJR6QPN59"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-// Export necessary services
-export const auth = getAuth(app);
-export const db = getDatabase(app);     // ✅ Use this in your component
-export const storage = getStorage(app); // ✅ For uploading CVs
+export const database = getDatabase(app);

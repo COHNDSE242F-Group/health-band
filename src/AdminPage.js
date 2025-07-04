@@ -12,6 +12,8 @@ export default function AdminPage()  {
         <div className="button-group">
           <button className="btn btn-add" onClick={() => navigate('/admin-reg-doc')}>Add</button>
           <button className="btn btn-view" onClick={() => navigate('/view-doctors')}>View Registered Doctors</button>
+          <button className="btn btn-add" onClick={() => navigate('/DoctorLogin')}>enter as Doctors</button>
+
           </div>
       </section>
     </div>

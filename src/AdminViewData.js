@@ -1,23 +1,31 @@
-// AdminViewData.jsx
-import React, { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from './firebase';
+import React, { useState, useEffect } from 'react';
+import { database } from './firebase';
+import { ref, onValue } from 'firebase/database';
 
-export default function AdminViewData() {
+const thStyle = {
+  padding: '10px',
+  border: '1px solid #ddd',
+  textAlign: 'left'
+};
+
+const tdStyle = {
+  padding: '8px',
+  border: '1px solid #ddd'
+};
+
+function AdminViewData() {
   const [doctors, setDoctors] = useState([]);
 
   useEffect(() => {
-    const fetchDoctors = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, "users"));
-        const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        setDoctors(data);
-      } catch (error) {
-        console.error("Error fetching doctor data:", error.message);
-      }
-    };
+    const doctorsRef = ref(database, 'doctors');
 
-    fetchDoctors();
+    onValue(doctorsRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        const doctorArray = Object.values(data);
+        setDoctors(doctorArray);
+      }
+    });
   }, []);
 
   return (
@@ -57,13 +65,4 @@ export default function AdminViewData() {
   );
 }
 
-const thStyle = {
-  padding: '10px',
-  border: '1px solid #ddd',
-  textAlign: 'left'
-};
-
-const tdStyle = {
-  padding: '8px',
-  border: '1px solid #ddd'
-};
+export default AdminViewData;
