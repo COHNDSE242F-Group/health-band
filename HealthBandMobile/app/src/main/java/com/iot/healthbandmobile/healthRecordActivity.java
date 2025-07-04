@@ -1,6 +1,8 @@
 package com.iot.healthbandmobile;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,6 +68,35 @@ public class healthRecordActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(healthRecordActivity.this, "Error: " + error.getMessage(), Toast.LENGTH_LONG).show();
             }
+
+
         });
     }
+    public void setupNavBar() {
+        LinearLayout navHome = findViewById(R.id.navHome);
+        LinearLayout navHistory = findViewById(R.id.navHistory);
+        LinearLayout navNotification = findViewById(R.id.navNotification);
+        LinearLayout navProfile = findViewById(R.id.navProfile);
+
+        navHome.setOnClickListener(v -> {
+            startActivity(new Intent(this, loginActivity.class));
+            finish();
+        });
+
+        navHistory.setOnClickListener(v -> {
+           startActivity(new Intent(this, MainActivity.class));
+            finish();
+        });
+
+        //navNotification.setOnClickListener(v -> {
+        //    startActivity(new Intent(this, NotificationActivity.class));
+        //    finish();
+       // });
+
+       // navProfile.setOnClickListener(v -> {
+       //     startActivity(new Intent(this, ProfileActivity.class));
+       //     finish();
+      //  });
+    }
+
 }

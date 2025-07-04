@@ -2,6 +2,7 @@ package com.iot.healthbandmobile;
 
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -42,6 +43,7 @@ public class loginActivity extends AppCompatActivity {
                 loginUser();
             }
         });
+        setupNavBar();
     }
 
     private void loginUser() {
@@ -78,5 +80,32 @@ public class loginActivity extends AppCompatActivity {
                     }
                 });
 
+    }
+
+    public void setupNavBar() {
+        LinearLayout navHome = findViewById(R.id.navHome);
+        LinearLayout navHistory = findViewById(R.id.navHistory);
+        LinearLayout navNotification = findViewById(R.id.navNotification);
+        LinearLayout navProfile = findViewById(R.id.navProfile);
+
+        navHome.setOnClickListener(v -> {
+            startActivity(new Intent(this, loginActivity.class));
+            finish();
+        });
+
+        navHistory.setOnClickListener(v -> {
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+        });
+
+        //navNotification.setOnClickListener(v -> {
+        //    startActivity(new Intent(this, NotificationActivity.class));
+        //    finish();
+        // });
+
+        // navProfile.setOnClickListener(v -> {
+        //     startActivity(new Intent(this, ProfileActivity.class));
+        //     finish();
+        //  });
     }
 }

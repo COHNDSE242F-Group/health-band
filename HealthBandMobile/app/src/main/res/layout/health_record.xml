@@ -308,7 +308,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/navReports"
+            android:id="@+id/navHistory"
             android:orientation="vertical"
             android:gravity="center_horizontal"
             android:clickable="true"
@@ -319,12 +319,12 @@
 
             <ImageView
                 android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_height="14dp"
                 android:src="@android:drawable/ic_menu_info_details" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Reports"
+                android:text="History"
                 android:textColor="#407CE2"
                 android:textSize="12sp"
                 android:textStyle="bold" />
