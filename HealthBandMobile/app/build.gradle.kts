@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
-   alias(libs.plugins.google.services)  // apply Google Services plugin here
+   //alias(libs.plugins.google.services)  // apply Google Services plugin here
+
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -43,9 +45,16 @@ dependencies {
     implementation(libs.firebase.database.ktx)
     implementation(libs.firebase.auth)
 
+    // Biometric
+    implementation(libs.biometric)
+
+   implementation(platform(libs.firebase.bom.v33160))
+    implementation(libs.firebase.analytics)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
 
 }
 

@@ -22,15 +22,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:layout_marginBottom="30dp"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginEnd="12dp"
-                    android:src="@mipmap/ic_launcher" />
+
+
+
 
                 <TextView
                     android:text="Sign In"
@@ -38,6 +36,7 @@
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
+
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
@@ -96,11 +95,11 @@
                     android:textSize="14sp"
                     android:background="@null" />
 
-                <ImageView
-                    android:id="@+id/imageViewTogglePassword"
+                <Button
+                    android:id="@+id/btnTogglePassword"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@mipmap/ic_launcher" />
+                     />
             </LinearLayout>
 
             <!-- Forgot Password -->
@@ -125,7 +124,7 @@
                 android:gravity="center"
                 android:paddingVertical="16dp">
 
-                <TextView
+                <Button
                     android:id="@+id/btnSignIn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -133,6 +132,34 @@
                     android:textColor="#FFFFFF"
                     android:textSize="16sp"
                     android:textStyle="bold" />
+            </LinearLayout>
+
+
+            <!-- Fingerprint login button -->
+            <LinearLayout
+                android:id="@+id/btnFingerprintLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal"
+                android:padding="16dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@android:drawable/ic_lock_idle_lock" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Login with Fingerprint"
+                    android:textColor="#407CE2"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"/>
             </LinearLayout>
 
         </LinearLayout>
