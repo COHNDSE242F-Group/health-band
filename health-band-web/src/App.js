@@ -1,24 +1,29 @@
-import logo from './logo.svg';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import PatientsList from "./components/PatientsList";
+import Topbar from './components/Topbar';
+import PatientManagement from './components/PatientManagement';
+import Profile from './components/Profile';
+import PatientDetails from './components/PatientDetails';
+import AddPatientForm from './components/AddPatientForm';
 import './App.css';
 
 function App() {
+  const [activeTab, setActiveTab] = useState('home');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="app-container">
+        <Topbar activeTab={activeTab} setActiveTab={setActiveTab} />
+        <Routes>
+          <Route path="/" element={<PatientsList />} />
+          <Route path="/patients" element={<PatientManagement />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/patients/:id" element={<PatientDetails />} />
+           <Route path="/add-patient" element={<AddPatientForm />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

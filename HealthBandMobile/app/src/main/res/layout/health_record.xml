@@ -54,7 +54,6 @@
 
                         <TextView
                             android:id="@+id/heartRateValueText"
-
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="97"
@@ -94,7 +93,6 @@
                     android:focusable="true">
 
                     <TextView
-
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Blood Pressure"
