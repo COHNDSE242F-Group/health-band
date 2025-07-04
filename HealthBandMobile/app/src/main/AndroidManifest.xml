@@ -12,9 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthBandMobile"
         tools:targetApi="31">
-        <activity
-            android:name=".ProfileViewActivity"
-            android:exported="false" />
+
+        <activity android:name=".MedicalHistoryActivity" />
+        <activity android:name=".ProfileActivity" />
+
+
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
