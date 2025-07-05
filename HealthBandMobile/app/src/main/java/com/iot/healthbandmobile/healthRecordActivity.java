@@ -52,6 +52,7 @@ public class healthRecordActivity extends AppCompatActivity {
         getWindow().setStatusBarColor(getResources().getColor(R.color.white));
 
 
+
     }
 
 
@@ -91,6 +92,7 @@ public class healthRecordActivity extends AppCompatActivity {
     }
 
 
+
     public void setupNavBar() {
         LinearLayout navHome = findViewById(R.id.navHome);
         LinearLayout navHistory = findViewById(R.id.navHistory);
@@ -99,6 +101,7 @@ public class healthRecordActivity extends AppCompatActivity {
 
         navHome.setOnClickListener(v -> {
             startActivity(new Intent(this, healthRecordActivity.class));
+
             finish();
         });
 
@@ -108,6 +111,7 @@ public class healthRecordActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
+
 
 
         //navNotification.setOnClickListener(v -> {

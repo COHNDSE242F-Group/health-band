@@ -32,6 +32,7 @@ public class loginActivity extends AppCompatActivity {
     private Button btnSignIn;
     private ImageButton btnTogglePassword;
 
+
     private Button btnFingerprintLogin;
     private FirebaseAuth firebaseAuth;
 
@@ -63,6 +64,7 @@ public class loginActivity extends AppCompatActivity {
 
         togglePassword();
         getWindow().setStatusBarColor(getResources().getColor(R.color.white));
+
 
 
     }
@@ -98,7 +100,9 @@ public class loginActivity extends AppCompatActivity {
                         Intent intent = new Intent(loginActivity.this, healthRecordActivity.class);
                         intent.putExtra("userId", patientId);
                         startActivity(intent);
+
                         found = true;  // ✅ ADD THIS!
+
 
                         finish();
                     }
@@ -113,6 +117,7 @@ public class loginActivity extends AppCompatActivity {
         });
 
     }
+
 
 
 
@@ -184,7 +189,7 @@ public class loginActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onAuthenticationFailed() {
+      public void onAuthenticationFailed() {
                         super.onAuthenticationFailed();
                         Toast.makeText(loginActivity.this, "Authentication failed", Toast.LENGTH_SHORT).show();
                     }
