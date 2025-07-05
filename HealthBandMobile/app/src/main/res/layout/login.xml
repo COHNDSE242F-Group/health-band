@@ -27,7 +27,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:text="Sign In"
+                    android:text="Log In"
                     android:textColor="#221F1F"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -45,11 +45,7 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginEnd="12dp"
-                    android:src="@mipmap/ic_launcher" />
+
 
                 <EditText
                     android:id="@+id/editTextEmail"
@@ -73,11 +69,6 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginEnd="12dp"
-                    android:src="@mipmap/ic_launcher" />
 
                 <EditText
                     android:id="@+id/editTextPassword"
@@ -90,24 +81,16 @@
                     android:textSize="14sp"
                     android:background="@null" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/btnTogglePassword"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                     />
+                    android:background="@null"
+                    android:src="@drawable/ic_eye"
+                 />
+
             </LinearLayout>
 
-            <!-- Forgot Password -->
-            <TextView
-                android:id="@+id/textViewForgotPassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Forgot password?"
-                android:textColor="#407CE2"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:layout_gravity="end"
-                android:layout_marginBottom="24dp" />
 
             <!-- Sign In Button -->
             <LinearLayout
@@ -123,11 +106,26 @@
                     android:id="@+id/btnSignIn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sign In"
+                    android:text="Log In"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:background="@color/blue"
+                    />
+
             </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OR"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:padding="16dp"/>
+
+
+
 
             <!-- Fingerprint login button -->
             <LinearLayout
@@ -156,111 +154,22 @@
                     android:layout_marginTop="8dp"/>
             </LinearLayout>
 
+
+
         </LinearLayout>
 
     </ScrollView>
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/careLinkText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:orientation="horizontal"
-        android:elevation="4dp"
-        android:paddingHorizontal="38dp"
-        android:paddingVertical="16dp"
+        android:text="CareLink"
+        android:textColor="#6200EE"
+    android:textSize="40sp"
+    android:textStyle="bold"
+    android:fontFamily="sans-serif-condensed"
+    android:layout_gravity="center_horizontal"
+    android:padding="16dp"/>
 
-        >
 
-        <LinearLayout
-            android:id="@+id/navHome"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:clickable="true"
-            android:focusable="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@android:drawable/ic_menu_view" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Home"
-                android:textColor="#221F1F"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/navHistory"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:clickable="true"
-            android:focusable="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="14dp"
-                android:src="@android:drawable/ic_menu_info_details" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="History"
-                android:textColor="#407CE2"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/navNotification"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:clickable="true"
-            android:focusable="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@android:drawable/ic_dialog_email" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Notification"
-                android:textColor="#221F1F"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/navProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="31dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@android:drawable/ic_menu_myplaces" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Profile"
-                android:textColor="#221F1F"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </LinearLayout>
 </LinearLayout>

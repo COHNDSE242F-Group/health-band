@@ -42,41 +42,57 @@ public class healthRecordActivity extends AppCompatActivity {
             finish();
             return;
         }
-        medicalDetailsRef = FirebaseDatabase.getInstance().getReference("medical_details").child(userId);
+        medicalDetailsRef = FirebaseDatabase.getInstance()
+                .getReference("patients")
+                .child(userId)
+                .child("sensordata");
+
         loadMedicalDetails();
+        setupNavBar();
+        getWindow().setStatusBarColor(getResources().getColor(R.color.white));
+
+
 
     }
 
 
     private void loadMedicalDetails() {
-        medicalDetailsRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    String heartRate = snapshot.child("heart_rate").getValue(String.class);
-                    String bloodPressure = snapshot.child("blood_pressure").getValue(String.class);
-                    String temperature = snapshot.child("temperature").getValue(String.class);
-                    String bloodGroup = snapshot.child("blood_group").getValue(String.class);
-                    String weight = snapshot.child("weight").getValue(String.class);
+        medicalDetailsRef.orderByKey().limitToLast(1)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            for (DataSnapshot dataPoint : snapshot.getChildren()) {
+                                String heartRate = String.valueOf(dataPoint.child("heart_rate").getValue());
+                                String bpSystolic = String.valueOf(dataPoint.child("blood_pressure_systolic").getValue());
+                                String bpDiastolic = String.valueOf(dataPoint.child("blood_pressure_diastolic").getValue());
+                                String temperature = String.valueOf(dataPoint.child("temperature").getValue());
+                                String pressure = String.valueOf(dataPoint.child("pressure").getValue());
 
-                    heartRateValueText.setText(heartRate != null ? heartRate : "--");
-                    bloodPressureValueText.setText(bloodPressure != null ? bloodPressure : "--");
-                    temperatureValueText.setText(temperature != null ? temperature : "--");
-                    bloodGroupValueText.setText(bloodGroup != null ? bloodGroup : "--");
-                    weightValueText.setText(weight != null ? weight : "--");
-                } else {
-                    Toast.makeText(healthRecordActivity.this, "No medical details found", Toast.LENGTH_SHORT).show();
-                }
-            }
+                                // Set values to your TextViews (use defaults if null)
+                                heartRateValueText.setText(heartRate != null ? heartRate : "--");
+                                bloodPressureValueText.setText(
+                                        (bpSystolic != null && bpDiastolic != null) ? bpSystolic + "/" + bpDiastolic : "--");
+                                temperatureValueText.setText(temperature != null ? temperature : "--");
+                                weightValueText.setText(pressure != null ? pressure : "--");  // Example usage
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(healthRecordActivity.this, "Error: " + error.getMessage(), Toast.LENGTH_LONG).show();
-            }
+                                // bloodGroupValueText: maybe set static or from personal_info if you have it
+                                bloodGroupValueText.setText("--");
+                            }
+                        } else {
+                            Toast.makeText(healthRecordActivity.this, "No sensor data found", Toast.LENGTH_SHORT).show();
+                        }
+                    }
 
-
-        });
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(healthRecordActivity.this, "Error: " + error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
     }
+
+
+
     public void setupNavBar() {
         LinearLayout navHome = findViewById(R.id.navHome);
         LinearLayout navHistory = findViewById(R.id.navHistory);
@@ -84,14 +100,19 @@ public class healthRecordActivity extends AppCompatActivity {
         LinearLayout navProfile = findViewById(R.id.navProfile);
 
         navHome.setOnClickListener(v -> {
-            startActivity(new Intent(this, loginActivity.class));
+            startActivity(new Intent(this, healthRecordActivity.class));
+
             finish();
         });
 
         navHistory.setOnClickListener(v -> {
-           startActivity(new Intent(this, MainActivity.class));
+            Intent intent = new Intent(this, healthHistoriActivity.class);
+            intent.putExtra("userId", getIntent().getStringExtra("userId"));
+            startActivity(intent);
             finish();
         });
+
+
 
         //navNotification.setOnClickListener(v -> {
         //    startActivity(new Intent(this, NotificationActivity.class));

@@ -1,5 +1,6 @@
 [versions]
-agp = "8.9.2"
+agp = "8.10.0"
+firebaseBom = "33.16.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
@@ -8,6 +9,8 @@ material = "1.12.0"
 activity = "1.10.1"
 constraintlayout = "2.2.1"
 biometric = "1.2.0-alpha04"
+mpandroidchart = "v3.1.0"
+
 
 
 [libraries]
@@ -24,6 +27,9 @@ firebase-bom = { module = "com.google.firebase:firebase-bom", version = "32.1.0"
 firebase-database-ktx = { module = "com.google.firebase:firebase-database-ktx" }
 firebase-auth = { module = "com.google.firebase:firebase-auth-ktx" }
 biometric = { group = "androidx.biometric", name = "biometric", version.ref = "biometric" }
+mpandroidchart = { module = "com.github.PhilJay:MPAndroidChart", version.ref = "mpandroidchart" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+google-services = { id = "com.google.gms.google-services", version = "4.3.15" }
+
