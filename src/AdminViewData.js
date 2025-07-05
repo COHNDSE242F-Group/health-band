@@ -48,7 +48,7 @@ function AdminViewData() {
         <tbody>
           {doctors.map((doc, idx) => (
             <tr key={idx}>
-              <td style={tdStyle}>{doc.fullname}</td>
+              <td style={tdStyle}>{doc.fullName}</td>
               <td style={tdStyle}>{doc.email}</td>
               <td style={tdStyle}>{doc.phone}</td>
               <td style={tdStyle}>{doc.degree}</td>
