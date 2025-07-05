@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,7 +30,7 @@ public class loginActivity extends AppCompatActivity {
 
     private EditText editTextEmail, editTextPassword;
     private Button btnSignIn;
-    private Button btnTogglePassword;
+    private ImageButton btnTogglePassword;
 
     private Button btnFingerprintLogin;
     private FirebaseAuth firebaseAuth;

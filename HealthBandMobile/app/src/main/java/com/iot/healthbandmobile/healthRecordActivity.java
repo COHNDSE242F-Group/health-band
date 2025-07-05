@@ -96,14 +96,17 @@ public class healthRecordActivity extends AppCompatActivity {
         LinearLayout navProfile = findViewById(R.id.navProfile);
 
         navHome.setOnClickListener(v -> {
-            startActivity(new Intent(this, loginActivity.class));
+            startActivity(new Intent(this, healthRecordActivity.class));
             finish();
         });
 
         navHistory.setOnClickListener(v -> {
-           startActivity(new Intent(this, MainActivity.class));
+            Intent intent = new Intent(this, healthHistoriActivity.class);
+            intent.putExtra("userId", getIntent().getStringExtra("userId"));
+            startActivity(intent);
             finish();
         });
+
 
         //navNotification.setOnClickListener(v -> {
         //    startActivity(new Intent(this, NotificationActivity.class));

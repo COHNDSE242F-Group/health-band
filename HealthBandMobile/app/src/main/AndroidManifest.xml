@@ -16,6 +16,7 @@
         <activity android:name=".loginActivity"/>
         <activity android:name=".healthRecordActivity"/>
         <activity android:name=".MainActivity" />
+        <activity android:name=".healthHistoriActivity"/>
 
 
     <activity
