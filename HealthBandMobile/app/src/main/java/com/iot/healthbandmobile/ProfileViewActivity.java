@@ -19,6 +19,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private TextView tvName, tvAge, tvGender, tvCondition, tvContact, tvHealthInfo;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,3 +78,4 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 }
+

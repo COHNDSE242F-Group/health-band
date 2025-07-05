@@ -4,6 +4,7 @@
     <color name="black">#000000</color>
     <color name="blue">#4F46E5</color>
     <color name="blue_light">#E0E7FF</color>
+    <color name="purple_500">#6200EE</color>
 
 
 </resources>

@@ -47,9 +47,17 @@ dependencies {
 
     // Biometric
     implementation(libs.biometric)
-
+// fireabse
    implementation(platform(libs.firebase.bom.v33160))
     implementation(libs.firebase.analytics)
+
+    //chart
+       // implementation (libs.mpandroidchart)
+    implementation("com.github.PhilJay:MPAndroidChart:3.1.0")
+
+
+
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

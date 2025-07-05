@@ -56,4 +56,5 @@ public class MedicalHistoryAdapter extends RecyclerView.Adapter<MedicalHistoryAd
             tvSituation = itemView.findViewById(R.id.tvSituation);
         }
     }
+
 }

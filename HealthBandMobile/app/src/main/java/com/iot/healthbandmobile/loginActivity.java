@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,7 +30,8 @@ public class loginActivity extends AppCompatActivity {
 
     private EditText editTextEmail, editTextPassword;
     private Button btnSignIn;
-    private Button btnTogglePassword;
+    private ImageButton btnTogglePassword;
+
 
     private Button btnFingerprintLogin;
     private FirebaseAuth firebaseAuth;
@@ -59,8 +61,11 @@ public class loginActivity extends AppCompatActivity {
             }
         });
 
-        setupNavBar();
+
         togglePassword();
+        getWindow().setStatusBarColor(getResources().getColor(R.color.white));
+
+
 
     }
 
@@ -95,6 +100,10 @@ public class loginActivity extends AppCompatActivity {
                         Intent intent = new Intent(loginActivity.this, healthRecordActivity.class);
                         intent.putExtra("userId", patientId);
                         startActivity(intent);
+
+                        found = true;  // ✅ ADD THIS!
+
+
                         finish();
                     }
                 }
@@ -110,32 +119,8 @@ public class loginActivity extends AppCompatActivity {
     }
 
 
-    public void setupNavBar() {
-        LinearLayout navHome = findViewById(R.id.navHome);
-        LinearLayout navHistory = findViewById(R.id.navHistory);
-        LinearLayout navNotification = findViewById(R.id.navNotification);
-        LinearLayout navProfile = findViewById(R.id.navProfile);
 
-        navHome.setOnClickListener(v -> {
-            startActivity(new Intent(this, loginActivity.class));
-            finish();
-        });
 
-        navHistory.setOnClickListener(v -> {
-            startActivity(new Intent(this, MainActivity.class));
-            finish();
-        });
-
-        //navNotification.setOnClickListener(v -> {
-        //    startActivity(new Intent(this, NotificationActivity.class));
-        //    finish();
-        // });
-
-        // navProfile.setOnClickListener(v -> {
-        //     startActivity(new Intent(this, ProfileActivity.class));
-        //     finish();
-        //  });
-    }
     public void togglePassword(){
         btnTogglePassword.setOnClickListener(new View.OnClickListener() {
             private boolean isPasswordVisible = false;
@@ -204,7 +189,7 @@ public class loginActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onAuthenticationFailed() {
+      public void onAuthenticationFailed() {
                         super.onAuthenticationFailed();
                         Toast.makeText(loginActivity.this, "Authentication failed", Toast.LENGTH_SHORT).show();
                     }

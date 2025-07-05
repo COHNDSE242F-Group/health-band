@@ -20,4 +20,5 @@ public class MedicalRecord {
         this.disease = disease;
         this.situation = situation;
     }
+
 }
