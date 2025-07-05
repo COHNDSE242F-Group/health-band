@@ -5,6 +5,7 @@ import Topbar from './components/Topbar';
 import PatientManagement from './components/PatientManagement';
 import Profile from './components/Profile';
 import PatientDetails from './components/PatientDetails';
+import AddPatientForm from './components/AddPatientForm';
 import './App.css';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/patients" element={<PatientManagement />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/patients/:id" element={<PatientDetails />} />
+          <Route path="/add-patient" element={<AddPatientForm />} />
         </Routes>
       </div>
     </Router>
