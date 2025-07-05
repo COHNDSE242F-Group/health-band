@@ -1,4 +1,5 @@
 .add-patient-container {
+
   max-width: 600px;               
   margin: 40px auto;
   padding: 30px;
@@ -57,10 +58,23 @@
 
 .add-patient-button:hover {
   background-color: #4338ca;
+
   max-width: 400px;
   margin: auto;
   padding: 20px;
   border: 1px solid #ccc;
+
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.success-message {
+  color: green;
+  margin-bottom: 10px;
+
 }
 
 .error-message {
