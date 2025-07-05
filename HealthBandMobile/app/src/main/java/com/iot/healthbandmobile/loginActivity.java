@@ -62,6 +62,8 @@ public class loginActivity extends AppCompatActivity {
 
 
         togglePassword();
+        getWindow().setStatusBarColor(getResources().getColor(R.color.white));
+
 
     }
 

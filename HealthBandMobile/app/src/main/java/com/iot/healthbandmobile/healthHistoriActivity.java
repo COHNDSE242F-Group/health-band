@@ -1,6 +1,8 @@
 package com.iot.healthbandmobile;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,10 +34,7 @@ public class healthHistoriActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.health_histry);
 
-        heartRateText = findViewById(R.id.heartRateText);
-        bpText = findViewById(R.id.bpText);
-        tempText = findViewById(R.id.tempText);
-        weightText = findViewById(R.id.weightText);
+
 
         heartChart = findViewById(R.id.heartChart);
         bpChart = findViewById(R.id.bpChart);
@@ -55,40 +54,14 @@ public class healthHistoriActivity extends AppCompatActivity {
                 .child(userId)
                 .child("sensordata");
 
-        loadMedicalDetails();      // Load latest value for text cards
-        loadMedicalHistoryForCharts();  // Load all history for charts
+        loadMedicalHistoryForCharts();// Load all history for charts
+        setupNavBar();
+
+        getWindow().setStatusBarColor(getResources().getColor(R.color.white));
+
     }
 
-    private void loadMedicalDetails() {
-        medicalDetailsRef.orderByKey().limitToLast(1)
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
-                            for (DataSnapshot dp : snapshot.getChildren()) {
-                                String heartRate = String.valueOf(dp.child("heart_rate").getValue());
-                                String bpSystolic = String.valueOf(dp.child("blood_pressure_systolic").getValue());
-                                String bpDiastolic = String.valueOf(dp.child("blood_pressure_diastolic").getValue());
-                                String temperature = String.valueOf(dp.child("temperature").getValue());
-                                String weight = String.valueOf(dp.child("weight").getValue());
 
-                                heartRateText.setText(heartRate != null ? heartRate : "--");
-                                bpText.setText(
-                                        (bpSystolic != null && bpDiastolic != null) ? bpSystolic + "/" + bpDiastolic : "--");
-                                tempText.setText(temperature != null ? temperature + " C" : "--");
-                                weightText.setText(weight != null ? weight + " kg" : "--");
-                            }
-                        } else {
-                            Toast.makeText(healthHistoriActivity.this, "No data available.", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(healthHistoriActivity.this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
 
     private void loadMedicalHistoryForCharts() {
         medicalDetailsRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -162,6 +135,16 @@ public class healthHistoriActivity extends AppCompatActivity {
         desc.setText(label);
         chart.setDescription(desc);
 
+        // 👉 Enable horizontal scroll/zoom
+        chart.setDragEnabled(true);
+        chart.setScaleEnabled(true);
+        chart.setScaleXEnabled(true);
+        chart.setScaleYEnabled(false);
+        chart.setPinchZoom(true);
+        chart.setVisibleXRangeMaximum(5);  // Show 5 points max at once, scroll for more
+
+
+
         chart.invalidate();
     }
 
@@ -204,6 +187,36 @@ public class healthHistoriActivity extends AppCompatActivity {
         chart.setDescription(desc);
 
         chart.invalidate();
+    }
+
+    public void setupNavBar() {
+        LinearLayout navHome = findViewById(R.id.navHome);
+        LinearLayout navHistory = findViewById(R.id.navHistory);
+        LinearLayout navNotification = findViewById(R.id.navNotification);
+        LinearLayout navProfile = findViewById(R.id.navProfile);
+
+        navHome.setOnClickListener(v -> {
+            startActivity(new Intent(this, healthRecordActivity.class));
+            finish();
+        });
+
+        navHistory.setOnClickListener(v -> {
+            Intent intent = new Intent(this, healthHistoriActivity.class);
+            intent.putExtra("userId", getIntent().getStringExtra("userId"));
+            startActivity(intent);
+            finish();
+        });
+
+
+        //navNotification.setOnClickListener(v -> {
+        //    startActivity(new Intent(this, NotificationActivity.class));
+        //    finish();
+        // });
+
+        // navProfile.setOnClickListener(v -> {
+        //     startActivity(new Intent(this, ProfileActivity.class));
+        //     finish();
+        //  });
     }
 
 }

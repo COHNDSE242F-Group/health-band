@@ -49,6 +49,8 @@ public class healthRecordActivity extends AppCompatActivity {
 
         loadMedicalDetails();
         setupNavBar();
+        getWindow().setStatusBarColor(getResources().getColor(R.color.white));
+
 
     }
 
