@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import './AddPatientForm.css';
 import { database } from './firebase';
@@ -188,6 +189,7 @@ const AddPatientForm = () => {
           Add Patient
         </button>
       </form>
+
     </div>
   );
 };

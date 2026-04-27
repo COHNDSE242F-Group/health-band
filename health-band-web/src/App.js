@@ -20,7 +20,7 @@ function App() {
           <Route path="/patients" element={<PatientManagement />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/patients/:id" element={<PatientDetails />} />
-           <Route path="/add-patient" element={<AddPatientForm />} />
+          <Route path="/add-patient" element={<AddPatientForm />} />
         </Routes>
       </div>
     </Router>
